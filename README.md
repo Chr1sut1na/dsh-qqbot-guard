@@ -21,9 +21,18 @@ QQ 机器人边界守卫（dsh 插件）：给 `@tencent-connect/dsh-qqbot` 的�
 dsh plugin --profile <profile名> add ./dsh-qqbot-guard-0.1.2.tgz
 # 或目录形式
 dsh plugin --profile <profile名> add ./dsh-qqbot-guard
-# 或直接从 GitHub 装
-dsh plugin --profile <profile名> add github:<你的GitHub用户名>/dsh-qqbot-guard
+# 或直接从 GitHub 装（推荐用 github: 形式，网页地址不是合法的包 spec）
+dsh plugin --profile <profile名> add github:Chr1sut1na/dsh-qqbot-guard
 ```
+
+### 让 AI 助手帮你装
+
+可以直接对你的 dsh 说：
+
+> 请帮我安装 dsh 插件 `github:Chr1sut1na/dsh-qqbot-guard`（仓库：https://github.com/Chr1sut1na/dsh-qqbot-guard）。
+> 如果我的 profile 是桌面客户端独占的，请告诉我「插件 → 添加插件 → 安装第三方插件」里该填什么；装完帮我在设置里确认面板出现。
+
+注意：`https://github.com/...` 这种网页地址不是合法的包 spec，安装时要用 `github:用户/仓库` 或 `git+https://github.com/用户/仓库.git`。
 
 > Electron 桌面版独占的 profile（如默认 `desktop`）会拒绝 CLI 操作，用客户端里的「安装第三方插件」。
 
