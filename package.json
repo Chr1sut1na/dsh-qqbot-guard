@@ -1,0 +1,53 @@
+{
+  "name": "dsh-qqbot-guard",
+  "version": "0.1.2",
+  "description": "QQ 机器人边界守卫：工具防火墙 + 角色内回避约束（dsh 插件）",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "index.mjs",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "qqbot",
+    "cordis",
+    "plugin",
+    "guard",
+    "sandbox",
+    "persona"
+  ],
+  "license": "MIT",
+  "author": "Chrisutina",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chr1sut1na/dsh-qqbot-guard.git"
+  },
+  "homepage": "https://github.com/Chr1sut1na/dsh-qqbot-guard#readme",
+  "bugs": {
+    "url": "https://github.com/Chr1sut1na/dsh-qqbot-guard/issues"
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    },
+    "compatibility": {
+      "note": "在 dsh-desktop 0.2.1-rc.2 + @tencent-connect/dsh-qqbot 0.5.2 上验证。依赖 system-prompt/assemble 瀑布与 qqbot 的 qqbot:scope-prompt section；上游改名时本插件会 fail-open，请用设置页/状态接口确认。"
+    }
+  }
+}

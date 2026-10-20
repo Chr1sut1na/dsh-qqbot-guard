@@ -1,0 +1,35 @@
+# dsh-qqbot-guard 的 bundle patch
+#
+# 安装后本 patch 自动加载，插入下面这行插件（零配置即生效）。
+# 想改配置：在 profile 的 cordis.patch.yml 里用同样的 id 覆盖**整份 config**
+# （patch 是整行替换，不是合并——所有字段都要重写一遍）。
+# 更推荐：用设置页「QQ 机器人边界守卫」改，保存即生效、不碰这个文件。
+
+- insert:
+    - id: qqbot-guard
+      name: 'dsh-qqbot-guard'
+      config:
+        # 工具防火墙：allow = 只保留列表里的；mode: deny 则相反
+        tools:
+          mode: allow
+          allow:
+            - web_search
+            - web_fetch
+          deny: []
+
+        # 怎么认出 QQ 机器人。
+        # sections 为默认判据：dsh-qqbot 每轮都会往 system-prompt 里加 qqbot:scope-prompt。
+        # cwdPrefixes 是兜底（填机器人工作目录前缀）；toolNames 也是兜底。
+        detect:
+          sections:
+            - qqbot:scope-prompt
+          cwdPrefixes: []
+          toolNames: []
+
+        # 角色内回避规则：作为 system-prompt section 注入 QQ agent。
+        # text 留空 = 使用内置规则；设置页里改的优先于此文件。
+        persona:
+          enabled: true
+          name: qqbot:no-machine
+          order: 95
+          text: ''
